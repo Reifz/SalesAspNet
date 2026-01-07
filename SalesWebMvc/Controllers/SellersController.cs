@@ -35,13 +35,13 @@ namespace SalesWebMvc.Controllers {
         }
 
         public IActionResult Delete(int? id) {
-            if(id == null) {
+            if (id == null) {
                 return NotFound();
             }
 
             var obj = _sellerService.FindById(id.Value);
 
-            if(obj == null) {
+            if (obj == null) {
                 return NotFound();
             }
             return View(obj);
@@ -82,7 +82,7 @@ namespace SalesWebMvc.Controllers {
                 return NotFound();
             }
             List<Department> departments = _departmentService.FindAll();
-            SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departments = departments }
+            SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departments = departments };
 
 
             return View(viewModel);
@@ -91,8 +91,8 @@ namespace SalesWebMvc.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Seller seller) { 
-            if(id != seller.Id) {
+        public IActionResult Edit(int id, Seller seller) {
+            if (id != seller.Id) {
                 return BadRequest();
             }
 
@@ -108,5 +108,6 @@ namespace SalesWebMvc.Controllers {
 
             }
 
-     }
+        }
+    }
 }
