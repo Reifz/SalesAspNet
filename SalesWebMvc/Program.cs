@@ -4,6 +4,8 @@ using SalesWebMvc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 
+using SalesWebMvc.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SalesWebMvcContext>(options =>
     options.UseMySql(
@@ -15,6 +17,7 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
 );
 
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
